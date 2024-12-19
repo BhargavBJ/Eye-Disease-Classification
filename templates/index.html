@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Disease Classification</title>
+    <style>
+        /* General Reset and Body Styling */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #a6c0fe, #f68084); /* Soft gradient background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            transition: background 0.5s ease-in-out;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            border-top: 5px solid #ff6f61; /* Soft coral color for a modern twist */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Header Styling */
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ff6f61;
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="file"] {
+            font-size: 14px;
+            padding: 12px;
+            border: 2px solid #ff6f61;
+            border-radius: 8px;
+            background: #f9fcff;
+            color: #333;
+            margin-bottom: 20px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="file"]:hover {
+            border-color: #ff4d4d; /* Hover color change */
+        }
+
+        button {
+            background: #ff6f61;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: #ff4d4d; /* Hover effect */
+            transform: scale(1.05);
+        }
+
+        /* Result Styling */
+        .result {
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff6f61;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        /* Image Styling */
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 1px solid #ffb3b3;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05); /* Image hover effect */
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        /* Keyframe Animations */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-50%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Eye Disease Classification</h1>
+        <p>Upload an image of your eye, and our system will predict the condition.</p>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Upload and Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">🩺 Current Eye Condition: {{ prediction }}</div>
+        <img src="{{ image_path }}" alt="Uploaded Image">
+        {% endif %}
+    </div>
+
+    <footer>
+        &copy; 2024 Eye Disease Classification. All Rights Reserved.
+    </footer>
+</body>
+</html>
