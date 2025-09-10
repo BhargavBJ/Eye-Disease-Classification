@@ -96,5 +96,3 @@ Pull requests are welcome! If you’d like to add new features (e.g., transfer l
 
 This project is licensed under the MIT License.
 
-```
-
